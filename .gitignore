@@ -1,0 +1,6 @@
+.vscode/
+src/debug.cfg
+src/debug_custom.json
+src/esp32s3.svd
+src/env.h
+build/
