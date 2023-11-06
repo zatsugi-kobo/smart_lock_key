@@ -28,10 +28,15 @@ SwitchBot Lock の鍵
 - M5Capsule (M5Stamp S3)
 - M5Stamp S3の場合は何かしらの電源
 ## ソフトウェア
+- src
+  - src.ino ... メインプログラム
+  - SBConnector.h/SBConnector.cpp ... SwitchBot 操作用クラス
+  - wpsConnector.h/wpsConnect.cpp ... WPS 設定モジュール
+  - env.h ... SwitchBot接続用token/secret/デバイスID格納用ヘッダファイル (使わない場合、src.inoに直書き)
 ## ビルド
 公開しているソースは Visual Studio Code + Arduino IDE ですが、Arduino IDE だけでビルドできるはずです。
 1. 必要なライブラリのインストール
-    - FastLED
+    - [FastLED](https://github.com/FastLED/FastLED)
     - [ButtonFever](https://github.com/mickey9801/ButtonFever)
     - [Seeed_Arduino_mbedtls](https://github.com/Seeed-Studio/Seeed_Arduino_mbedtls)
     - [UUID](https://github.com/RobTillaart/UUID)
