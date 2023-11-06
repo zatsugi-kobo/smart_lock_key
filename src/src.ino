@@ -105,6 +105,7 @@ void pressHandler (BfButton *btn, BfButton::press_pattern_t pattern)
   leds[0] = colors[LED_OFF];
   FastLED.show();
   ztglib::SBConnector sb(sb_token, sb_secret);
+  disableCore0WDT();  // レスポンス待ちでCore 0 のWDTが発動しないように一旦止める
 
   //DEBUG_PRINT(btn->getID());
   switch (pattern)  {
@@ -138,6 +139,8 @@ void pressHandler (BfButton *btn, BfButton::press_pattern_t pattern)
       sb.lock(sb_lockdevid, sb_lockdevnum);
       break;
   }
+
+  enableCore0WDT();   // WDT有効化
   delay(1000);
   digitalWrite(PWRCTL_PIN, LOW);   // 電源OFF
 }
@@ -158,4 +161,6 @@ void loop()
   if (ms - timeout > TIMEOUT) {
     digitalWrite(PWRCTL_PIN, LOW);   // 電源OFF
   }
+
+  delay(1);   // CPUリソースをリリース
 }
